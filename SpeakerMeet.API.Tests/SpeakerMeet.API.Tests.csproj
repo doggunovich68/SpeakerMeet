@@ -2,13 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
 
   <ItemGroup>
   <ProjectReference Include="../SpeakerMeet.API/SpeakerMeet.API.csproj" />
   </ItemGroup>
-
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
