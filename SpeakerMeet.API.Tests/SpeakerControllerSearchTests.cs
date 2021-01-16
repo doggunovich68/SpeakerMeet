@@ -13,12 +13,11 @@ public class SpeakerControllerSearchTests
 	    var controller = new SpeakerController();
         }
         [Fact]
-    public void ItHasSearch() //Проверяем наличие метода Поиск
+        public void ItHasSearch() //Проверяем наличие метода Поиск
         {
             var controller = new SpeakerController();
             controller.Search("Jos");
         }
-
         [Fact]
         public void ItReturnsOkObjectResult()
         { 
@@ -26,6 +25,15 @@ public class SpeakerControllerSearchTests
             var result = controller.Search("Jos");
             Assert.NotNull(result);                    //Поиск принес результат?
             Assert.IsType<OkObjectResult>(result);     //Результат ОК?
+        }
+        [Fact]
+        public void ItReturnsCollectionOfSpeakers()
+        {
+            var controller = new SpeakerController();
+            var result = controller.Search("Jos");
+            Assert.NotNull(result);
+            Assert.NotNull(result.Value);
+            Assert.IsType<List<Speaker>>(result.Value);
         }
     }
 }
