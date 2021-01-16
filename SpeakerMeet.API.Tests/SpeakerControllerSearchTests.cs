@@ -2,6 +2,7 @@ using System;
 using Xunit;
 using SpeakerMeet.API.Controllers;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace SpeakerMeet.API.Tests
 {
@@ -18,6 +19,7 @@ public class SpeakerControllerSearchTests
             var controller = new SpeakerController();
             controller.Search("Jos");
         }
+
         [Fact]
         public void ItReturnsOkObjectResult()
         { 
@@ -30,7 +32,7 @@ public class SpeakerControllerSearchTests
         public void ItReturnsCollectionOfSpeakers()
         {
             var controller = new SpeakerController();
-            var result = controller.Search("Jos");
+            var result = controller.Search("Jos") as OkObjectResult;
             Assert.NotNull(result);
             Assert.NotNull(result.Value);
             Assert.IsType<List<Speaker>>(result.Value);
